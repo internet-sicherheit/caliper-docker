@@ -10,7 +10,7 @@ Note that the certificates in `crypto-config` have been copied from the [Caliper
 Just start the provided docker-compose project and you should be good to go:
 
 ```bash
-$ docker-compse up
+$ docker-compose up
 ```
 
 # License
