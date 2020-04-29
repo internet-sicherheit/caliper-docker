@@ -5,10 +5,10 @@ services:
     container_name: caliper
     build: .
     environment:
-      - CALIPER_BIND_SUT=fabric
-      - CALIPER_BIND_SDK=1.4.1
+      - CALIPER_BIND_SUT=ethereum
+      - CALIPER_BIND_SDK=1.2.1
       - CALIPER_BENCHCONFIG=benchmarks/scenario/config.yaml
-      - CALIPER_NETWORKCONFIG=networks/fabric/fabric-go.yaml
+      - CALIPER_NETWORKCONFIG=networks/ethereum/1node/ethereum.json
       - ABSOLUTE_PATH=${PWD}
     volumes:
       - $PWD:$PWD
