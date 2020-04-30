@@ -3,15 +3,17 @@
 This repo demonstrates how to use [Hyperledger Caliper](https://github.com/hyperledger/caliper) from within Docker.
 We are using the [Docker-Wormhole-Pattern](https://ro14nd.de/Docker-Wormhole-Pattern) approach to interact with the Docker daemon from within the Caliper container. This means the SUT is setup ad-hoc using docker-compose from within the running Caliper container.
 
-Note that the certificates in `crypto-config` have been copied from the [Caliper Benchmark Examples](https://github.com/hyperledger/caliper-benchmarks) and they should **never** be used in production environments.
+Note that the Fabric certificates in `crypto-config` have been copied from the [Caliper Benchmark Examples](https://github.com/hyperledger/caliper-benchmarks) and they should **never** be used in production environments. Same holds true for the Ethereum key material in `keys`.
 
 # Usage
 
 Just start the provided docker-compose project and you should be good to go:
 
 ```bash
-$ docker-compose up
+$ docker-compose --env fabric.env up
 ```
+
+Since the npm installation seems to be a bit messy, it is sometimes necessary to remove the old container.
 
 # License
 
