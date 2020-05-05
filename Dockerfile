@@ -7,4 +7,4 @@ RUN addgroup docker
 RUN addgroup node docker
 RUN chown root:docker /var/run/docker.sock
 
-USER node:node
+USER node
