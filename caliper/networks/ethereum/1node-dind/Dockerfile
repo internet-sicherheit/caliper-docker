@@ -1,4 +1,3 @@
-#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -10,16 +9,9 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
-version: "3"
-services:
-  node:
-    build: .
-    image: caliper-ethereum
-    container_name: ethereum
-    ports:
-      - 8545:8545
-    volumes:
-      - ./keys:/root/.ethereum/keystore
-    command: --unlock 0xc0A8e4D217eB85b812aeb1226fAb6F588943C2C2 --password /root/.ethereum/keystore/password --mine --minerthreads 2 --etherbase 0xc0A8e4D217eB85b812aeb1226fAb6F588943C2C2 --rpc --rpcaddr 0.0.0.0 --rpcvhosts=* --rpcapi admin,eth,miner,personal,web3 --allow-insecure-unlock --nodiscover --gasprice 1
+FROM ethereum/client-go:stable
+COPY ./data/ /root/
+VOLUME [ "/root/.ethereum/keystore/" ]
+RUN geth --nousb init /root/genesis.json && geth --nousb import /root/bc.dat && geth --nousb makedag 0 /root/.ethash && geth --nousb makedag 30000 /root/.ethash
+ENTRYPOINT [ "geth" ]
