@@ -3,10 +3,12 @@ version: "2"
 services:
   caliper:
     container_name: caliper
-    build: .
+    image: hyperledger/caliper:0.3.0
+    command: launch master
+    networks:
+      - caliper-dind
     environment:
       - CALIPER_BIND_SUT=${SUT}
-      - CALIPER_BIND_SDK=${SDK}
       - CALIPER_BENCHCONFIG=benchmarks/scenario/config.yaml
       - CALIPER_NETWORKCONFIG=${NETWORK}
       - ABSOLUTE_PATH=${PWD}
@@ -14,3 +16,6 @@ services:
       - $PWD:$PWD
       - ./caliper:/hyperledger/caliper/workspace
       - /var/run/docker.sock:/var/run/docker.sock
+
+networks:
+  caliper-dind:
