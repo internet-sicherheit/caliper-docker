@@ -3,8 +3,9 @@ version: "2"
 services:
   caliper:
     container_name: caliper
-    image: hyperledger/caliper:0.3.0
+    build: .
     command: launch master
+    user: root
     networks:
       - caliper-dind
     environment:
