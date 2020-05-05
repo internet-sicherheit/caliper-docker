@@ -20,9 +20,7 @@ Since the npm installation seems to be a bit messy, it is sometimes necessary to
 From the `caliper` directory run:
 ```bash
 npm install 
-npx caliper bind --caliper-bind-sut ethereum --caliper-bind-sdk 1.2.1
-npx caliper benchmark run --caliper-workspace . --caliper-benchconfig benchmarks/scenario/config.yaml --caliper-networkconfig networks/ethereum/1node/ethereum.json
-
+npx caliper launch master --caliper-bind-sut ethereum:1.2.1 --caliper-workspace . --caliper-benchconfig benchmarks/scenario/config.yaml --caliper-networkconfig networks/ethereum/1node/ethereum.json
 ```
 
 
