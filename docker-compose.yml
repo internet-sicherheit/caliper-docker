@@ -5,7 +5,6 @@ services:
     container_name: caliper
     build: .
     command: launch master
-    user: root
     networks:
       - caliper-dind
     environment:
