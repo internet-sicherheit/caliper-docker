@@ -15,6 +15,17 @@ $ docker-compose --env fabric.env up
 
 Since the npm installation seems to be a bit messy, it is sometimes necessary to remove the old container.
 
+## Without Docker
+
+From the `caliper` directory run:
+```bash
+npm install 
+npx caliper bind --caliper-bind-sut ethereum --caliper-bind-sdk 1.2.1
+npx caliper benchmark run --caliper-workspace . --caliper-benchconfig benchmarks/scenario/config.yaml --caliper-networkconfig networks/ethereum/1node/ethereum.json
+
+```
+
+
 # License
 
 Since this work is heavly based upon the [Caliper Benchmark Examples](https://github.com/hyperledger/caliper-benchmarks) which are Apache licensed, we decided to license accordingly.
