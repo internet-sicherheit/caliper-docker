@@ -10,19 +10,19 @@ Note that the Fabric certificates in `crypto-config` have been copied from the [
 Just start the provided docker-compose project and you should be good to go:
 
 ```bash
-$ docker-compose --env fabric.env up
+$ docker-compose up
 ```
 
 Since the npm installation seems to be a bit messy, it is sometimes necessary to remove the old container.
+
+Note that, since we rely on the name of the root docker-compose network, docker-compose need to be exectued in such a way, that it results in docker network name `caliper-docker_caliper-dind` (meaning having `caliper-docker` as the compose project name).
 
 ## Without Docker
 
 From the `caliper` directory run:
 ```bash
 npm install 
-npx caliper bind --caliper-bind-sut ethereum --caliper-bind-sdk 1.2.1
-npx caliper benchmark run --caliper-workspace . --caliper-benchconfig benchmarks/scenario/config.yaml --caliper-networkconfig networks/ethereum/1node/ethereum.json
-
+npx caliper launch master --caliper-bind-sut ethereum:1.2.1 --caliper-workspace . --caliper-benchconfig benchmarks/scenario/config.yaml --caliper-networkconfig networks/ethereum/1node/ethereum.json
 ```
 
 

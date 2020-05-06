@@ -4,13 +4,18 @@ services:
   caliper:
     container_name: caliper
     build: .
+    command: launch master
+    networks:
+      - caliper-dind
     environment:
-      - CALIPER_BIND_SUT=${SUT}
-      - CALIPER_BIND_SDK=${SDK}
+      - CALIPER_BIND_SUT=ethereum:1.2.1
       - CALIPER_BENCHCONFIG=benchmarks/scenario/config.yaml
-      - CALIPER_NETWORKCONFIG=${NETWORK}
+      - CALIPER_NETWORKCONFIG=networks/ethereum/1node-dind/ethereum.json
       - ABSOLUTE_PATH=${PWD}
     volumes:
       - $PWD:$PWD
       - ./caliper:/hyperledger/caliper/workspace
       - /var/run/docker.sock:/var/run/docker.sock
+
+networks:
+  caliper-dind:
