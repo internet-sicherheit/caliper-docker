@@ -16,8 +16,8 @@ version: "3"
 services:
   node:
     build: .
-    image: caliper-ethereum
-    container_name: ethereum
+    image: caliper-ethereum-clique
+    container_name: ethereum_clique
     volumes:
       - ./keys:/root/.ethereum/keystore
     ports:
